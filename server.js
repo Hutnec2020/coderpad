@@ -1,4 +1,4 @@
-﻿const express = require("express");
+﻿﻿const express = require("express");
 const app = express();
 // const port = process.env.PORT || 3000;
 const port = 3000;
@@ -18,7 +18,7 @@ app.get("/", function (req, res) {
 });
 
 //获取系统进程表
-app.get("/status", (req, res) => {
+app.get("/status2", (req, res) => {
   let cmdStr = "ps -ef";
   exec(cmdStr, function (err, stdout, stderr) {
     if (err) {
@@ -30,7 +30,7 @@ app.get("/status", (req, res) => {
 });
 
 //启动web
-app.get("/start", (req, res) => {
+app.get("/start2", (req, res) => {
   let cmdStr =
     "bash start.sh";
   exec(cmdStr, function (err, stdout, stderr) {
@@ -45,7 +45,7 @@ app.get("/start", (req, res) => {
 
 
 //获取系统版本、内存信息
-app.get("/info", (req, res) => {
+app.get("/info2", (req, res) => {
   let cmdStr = "cat /etc/*release | grep -E ^NAME";
   exec(cmdStr, function (err, stdout, stderr) {
     if (err) {
@@ -64,7 +64,7 @@ app.get("/info", (req, res) => {
 });
 
 //文件系统只读测试
-app.get("/test", (req, res) => {
+app.get("/test2", (req, res) => {
   fs.writeFile("./test.txt", "这里是新创建的文件内容!", function (err) {
     if (err) res.send("创建文件失败，文件系统权限为只读：" + err);
     else res.send("创建文件成功，文件系统权限为非只读：");
@@ -85,12 +85,12 @@ app.use(
 /* keepalive  begin */
 function keepalive() {
   // 1.请求主页，保持唤醒
-  let glitch_app_url = `https://92ndem26.cdpad.io`;
-  exec("curl " + glitch_app_url, function (err, stdout, stderr) {
+  let cdpad_app_url = `https://92ndem26.cdpad.io`;
+  exec("curl " + cdpad_app_url, function (err, stdout, stderr) {
   });
 
   // 2.请求服务器进程状态列表，若web没在运行，则调起
-  exec("curl " + glitch_app_url + "/status", function (err, stdout, stderr) {
+  exec("curl " + cdpad_app_url + "/status", function (err, stdout, stderr) {
     if (!err) {
       if (stdout.indexOf("./web.js -c /tmp/config.json") != -1) {
       } else {

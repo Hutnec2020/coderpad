@@ -1,5 +1,5 @@
 {
-  "name": "glitch-mvp-node",
+  "name": "coderpad-mvp-node",
   "version": "0.1.0",
   "description": "A simple Node app built on fastify, instantly up and running.",
   "main": "server.js",
@@ -16,11 +16,11 @@
     "node": "14.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/glitch-mvp-node"
+    "url": "https://coderpad.io/edit/#!/coderpad-mvp-node"
   },
   "license": "MIT",
   "keywords": [
     "node",
-    "glitch"
+    "coderpad"
   ]
 }
